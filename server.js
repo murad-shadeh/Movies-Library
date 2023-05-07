@@ -23,17 +23,20 @@ const favoritesHandler = (req, res) => {
   });
 };
 app.get("/favorite", favoritesHandler);
-// errors
+// test internal server error
+app.get("/error", (req, res) => res.send(error()));
+// Errors handling
 const notFoundPage = (req, res) => {
   res.status(404).json({
     status: 404,
     responseText: "Page Not Found",
   });
 };
-const internalServerErrorPage = (req, res) => {
+const internalServerErrorPage = (err, req, res) => {
+  console.log(err.stack);
   res.status(500).json({
     status: 500,
-    responseText: "Sorry, something went wrong",
+    message: err,
   });
 };
 // handle errors

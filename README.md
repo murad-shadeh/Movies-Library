@@ -6,7 +6,7 @@
 
 ## WRRC
 
-![web request response cycle](img/wrrc.jpg)
+![web request response cycle](img/new-wrrc.jpg)
 
 ## Overview
 
@@ -26,5 +26,11 @@
 
 - Ability to use GET method and view the data
 - Ability to send data using constructor function
+- Ability to use GET method and view data from third party api
+- Ability to use axios api for third party api calls
+
+---
+
+_By Murad Dabbous_
 
 ---

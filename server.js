@@ -5,7 +5,13 @@ const cors = require("cors");
 const jsonData = require("./Movie Data/data.json");
 const app = express();
 app.use(cors());
-
+// 500 error handling
+const internalServerErrorPage = (err, req, res) => {
+  res.status(500).json({
+    code: 500,
+    message: err.message || err,
+  });
+};
 // First endpoint [Home Page]
 const homeHandler = (req, res) => {
   //   console.log(`Testing the first URL`);
@@ -23,8 +29,6 @@ const favoritesHandler = (req, res) => {
   });
 };
 app.get("/favorite", favoritesHandler);
-// test internal server error
-app.get("/error", (req, res) => res.send(error()));
 // Errors handling
 const notFoundPage = (req, res) => {
   res.status(404).json({
@@ -32,13 +36,7 @@ const notFoundPage = (req, res) => {
     responseText: "Page Not Found",
   });
 };
-const internalServerErrorPage = (err, req, res) => {
-  console.log(err.stack);
-  res.status(500).json({
-    status: 500,
-    message: err,
-  });
-};
+
 // handle errors
 app.use("*", notFoundPage);
 app.use("*", internalServerErrorPage);

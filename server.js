@@ -8,6 +8,19 @@ require("dotenv").config();
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 3005;
+// Errors handling
+const notFoundPage = (req, res) => {
+  res.status(404).json({
+    status: 404,
+    responseText: "Page Not Found",
+  });
+};
+const internalServerErrorPage = (err, req, res) => {
+  res.status(500).json({
+    code: 500,
+    message: err.message || err,
+  });
+};
 // First endpoint [Home Page]
 const homeHandler = (req, res) => {
   //   console.log(`Testing the first URL`);
@@ -34,8 +47,6 @@ const favoritesHandler = (req, res) => {
   });
 };
 app.get("/favorite", favoritesHandler);
-// test internal server error
-app.get("/error", (req, res) => res.send(error()));
 const trendingHandler = async (req, res) => {
   const data = await axios.get(
     `${process.env.TRENDING_URL}?api_key=${process.env.API_KEY}`
@@ -57,8 +68,10 @@ const trendingHandler = async (req, res) => {
 // new endpoint [trending]
 app.get("/trending", trendingHandler);
 const searchHandler = async (req, res) => {
+  const queryVal = req.query.queryVal;
+  // console.log(queryVal);
   const data = await axios.get(
-    `${process.env.SEARCH_URL_MOVIE}?api_key=${process.env.API_KEY}&language=en-US&query=movie&page=1&include_adult=false`
+    `${process.env.SEARCH_URL_MOVIE}?api_key=${process.env.API_KEY}&language=en-US&query=${queryVal}&page=2`
   );
   res.status(200).json({
     code: 200,
@@ -100,20 +113,6 @@ const networksHandler = async (req, res) => {
 };
 // new endpoint [networks]
 app.get("/networks", networksHandler);
-// Errors handling
-const notFoundPage = (req, res) => {
-  res.status(404).json({
-    status: 404,
-    responseText: "Page Not Found",
-  });
-};
-const internalServerErrorPage = (err, req, res) => {
-  console.log(err.stack);
-  res.status(500).json({
-    status: 500,
-    message: err,
-  });
-};
 // handle errors
 app.use("*", notFoundPage);
 app.use("*", internalServerErrorPage);

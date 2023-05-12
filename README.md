@@ -6,28 +6,25 @@
 
 ## WRRC
 
-![web request response cycle](img/new-wrrc.jpg)
+![web request response cycle](img/wrrc-14.jpg)
 
 ## Overview
 
-#### I am building a movie app that can check the latest movies based on categories.
+#### In this lab we will continue working on Movies Library repository and we will send request to a third-party api to display data.
 
 ## Getting Started
 
-- We created the repository that will hold our project
-- We cloned the repository to our local machine
-- We installed installed the external dependencies that we will use
-- we started to build our server and implement the given requirements
-- We used HTTP request GET method in this project
-- We handled the error pages that might occur if the user
-  tiggered them
+- Installing the required dependencies(axios and dotenv)
+- Sign up to the api website to get the API key.
+- Using our API key to send requests to the third-party api
+- Display the data from the third-party api
 
 ## Project Features
 
-- Ability to use GET method and view the data
-- Ability to send data using constructor function
-- Ability to use GET method and view data from third party api
-- Ability to use axios api for third party api calls
+- Using axios for third party api calls
+- Display data from real world API
+- Sending requests with unique key (my api key)
+- Display specific data based on the URL parameters
 
 ---
 

@@ -6,25 +6,24 @@
 
 ## WRRC
 
-![web request response cycle](img/wrrc-14.jpg)
+![web request response cycle](img/wrrc-16.jpg)
 
 ## Overview
 
-#### In this lab we will continue working on Movies Library repository and we will send request to a third-party api to display data.
+#### In this lab we will continue working on Movies Library repository and we will learn how to update, delete and get an entry from the database based on certain condition.
 
 ## Getting Started
 
-- Installing the required dependencies(axios and dotenv)
-- Sign up to the api website to get the API key.
-- Using our API key to send requests to the third-party api
-- Display the data from the third-party api
+- Using CRUD operations to manipulate data in the database
+- Learn how to implement get route to get specific data based on the id
+- Learn how to implement delete route to delete specific data based on the id
+- Learn how to implement put route to update specific data based on the id
 
 ## Project Features
 
-- Using axios for third party api calls
-- Display data from real world API
-- Sending requests with unique key (my api key)
-- Display specific data based on the URL parameters
+- Using DELETE request to delete certain entity from the database
+- Using PUT request to update certain entity in the database
+- Using GET request to display certain entity from the database
 
 ---
 

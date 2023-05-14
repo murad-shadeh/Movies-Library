@@ -149,56 +149,7 @@ const getMoviesHandler = (req, res) => {
     .catch((err) => {
       internalServerErrorPage(err, req, res);
     });
-};
-// get movies endpoint [getMovies]
-app.get("/getMovies", getMoviesHandler);
-const updateByIdHandler = (req, res) => {
-  const id = req.params.id;
-  const input = req.body;
-  const updateValues = [input.comments, id];
-  const sql = `UPDATE movie SET comments=$1 WHERE id =$2`;
-  client
-    .query(sql, updateValues)
-    .then((data) => {
-      res.status(202).json(data.rows);
-    })
-    .catch((err) => {
-      internalServerErrorPage(err, req, res);
-    });
-};
-// new endpoint [update by id]
-app.put("/update/:id", updateByIdHandler);
-const deleteByIdHandler = (req, res) => {
-  const id = req.params.id;
-  const sql = `DELETE FROM movie WHERE id = ${id}`;
-  client
-    .query(sql)
-    .then(() => {
-      res.status(204).json({
-        code: 204,
-        message: `Row deleted successfully with id ${id}`,
-      });
-    })
-    .catch((err) => {
-      internalServerErrorPage(err, req, res);
-    });
-};
-// new endpoint [delete by id]
-app.delete("/delete/:id", deleteByIdHandler);
-const getMovieByIdHandler = (req, res) => {
-  const id = req.params.id;
-  const sql = `SELECT * FROM movie WHERE id = ${id}`;
-  client
-    .query(sql)
-    .then((data) => {
-      res.status(200).json(data.rows);
-    })
-    .catch((err) => {
-      internalServerErrorPage(err, req, res);
-    });
-};
-// new endpoint [get movie by id]
-app.get("/getMovie/:id", getMovieByIdHandler);
+
 // handle errors
 app.use("*", notFoundPage);
 app.use("*", internalServerErrorPage);

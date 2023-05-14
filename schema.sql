@@ -6,3 +6,4 @@ create table if not exists movie(
     overview varchar(500),
     comments varchar(255)
 )
+

@@ -149,9 +149,6 @@ const getMoviesHandler = (req, res) => {
     .catch((err) => {
       internalServerErrorPage(err, req, res);
     });
-};
-// get movies endpoint [getMovies]
-app.get("/getMovies", getMoviesHandler);
 
 // handle errors
 app.use("*", notFoundPage);

@@ -6,7 +6,7 @@
 
 ## WRRC
 
-![web request response cycle](img/wrrc-16.jpg)
+![web request response cycle](img/wrrc-16-updated.jpg)
 
 ## Overview
 

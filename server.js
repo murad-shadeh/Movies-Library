@@ -30,6 +30,7 @@ const internalServerErrorPage = (err, req, res) => {
 const homeHandler = (req, res) => {
   //   console.log(`Testing the first URL`);
   //   res.status(200).json(data);
+  Add.newData = [];
   jsonData.map(
     (item) =>
       new Add(
@@ -40,6 +41,7 @@ const homeHandler = (req, res) => {
         item.overview
       )
   );
+
   res.status(200).json(Add.newData);
 };
 app.get("/", homeHandler);
@@ -137,6 +139,7 @@ const addMovieHandler = async (req, res) => {
 app.post("/addMovie", addMovieHandler);
 const getMoviesHandler = (req, res) => {
   const sql = `SELECT * FROM movie `;
+  data.rows = [];
   // returning a promise
   client
     .query(sql)
@@ -188,6 +191,7 @@ app.delete("/delete/:id", deleteByIdHandler);
 const getMovieByIdHandler = (req, res) => {
   const id = req.params.id;
   const sql = `SELECT * FROM movie WHERE id = ${id}`;
+  data.rows = [];
   client
     .query(sql)
     .then((data) => {

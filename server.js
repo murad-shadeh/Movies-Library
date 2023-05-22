@@ -139,7 +139,7 @@ const addMovieHandler = async (req, res) => {
 app.post("/addMovie", addMovieHandler);
 const getMoviesHandler = (req, res) => {
   const sql = `SELECT * FROM movie `;
-  data.rows = [];
+  // data.rows = [];
   // returning a promise
   client
     .query(sql)

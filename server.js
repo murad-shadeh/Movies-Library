@@ -139,7 +139,7 @@ const addMovieHandler = async (req, res) => {
 app.post("/addMovie", addMovieHandler);
 const getMoviesHandler = (req, res) => {
   const sql = `SELECT * FROM movie `;
-  data.rows = [];
+  // data.rows = [];
   // returning a promise
   client
     .query(sql)
@@ -191,7 +191,7 @@ app.delete("/delete/:id", deleteByIdHandler);
 const getMovieByIdHandler = (req, res) => {
   const id = req.params.id;
   const sql = `SELECT * FROM movie WHERE id = ${id}`;
-  data.rows = [];
+  // data.rows = [];
   client
     .query(sql)
     .then((data) => {

@@ -191,7 +191,7 @@ app.delete("/delete/:id", deleteByIdHandler);
 const getMovieByIdHandler = (req, res) => {
   const id = req.params.id;
   const sql = `SELECT * FROM movie WHERE id = ${id}`;
-  data.rows = [];
+  // data.rows = [];
   client
     .query(sql)
     .then((data) => {
